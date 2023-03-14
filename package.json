@@ -17,8 +17,9 @@
     "typescript": "^4.9.5"
   },
   "scripts": {
+    "build": "swc src -d dist --source-maps",
     "start": "nodemon src/server.ts",
-    "start dev": "nodemon "
+    "start dev": "nodemon"
   },
   "keywords": [],
   "author": "",
