@@ -7,7 +7,7 @@ dotenv.config();
 const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
 const URL = `postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}/${PGDATABASE}`;
 
-export const dbInit = () => {
+export const initDB = () => {
   return new Sequelize(URL, {
     models: [Product],
     dialectOptions: {
@@ -16,15 +16,4 @@ export const dbInit = () => {
       }
     }
   });
-
-  // return  new Sequelize(PGDATABASE, PGUSER, 'password', {
-  //   host: 'localhost',
-  //   dialect: /* one of 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle' */
-  // })
 };
-
-
-// const sequelize = new Sequelize('database', 'username', 'password', {
-//   host: 'localhost',
-//   dialect: /* one of 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle' */
-// });
