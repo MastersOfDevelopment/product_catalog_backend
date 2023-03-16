@@ -9,6 +9,6 @@ initDB();
 
 app.use(cors());
 
-app.use('/products', express.json(), productsRouter)
+app.use('/products', express.json(), productsRouter);
 
 app.listen(5000);

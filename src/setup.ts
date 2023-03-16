@@ -1,10 +1,10 @@
 import { Product } from './models/Product';
 import { initDB } from './utils/initDB';
 
-(async () => {
+(async() => {
   initDB();
 
   await Product.sync({ alter: true });
 
   console.log('synced!');
-})()
+})();
