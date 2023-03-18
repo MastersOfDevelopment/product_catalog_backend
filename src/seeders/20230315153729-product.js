@@ -1069,30 +1069,39 @@ const products =
 
 module.exports = {
   up: async(queryInterface, Sequelize) => {
-    await Promise.all(
-      products.map(async(product) => {
-        await queryInterface.bulkInsert('products', [
-          {
-            id: product.id,
-            category: product.category,
-            phoneId: product.phoneId,
-            itemId: product.itemId,
-            name: product.name,
-            fullPrice: product.fullPrice,
-            price: product.price,
-            screen: product.screen,
-            capacity: product.capacity,
-            color: product.color,
-            ram: product.ram,
-            year: product.year,
-            image: product.image,
-          },
-        ]);
-      }),
-    );
+    const transaction = await queryInterface.sequelize.transaction();
+
+    try {
+      await Promise.all(
+        products.map(async(product) => {
+          await queryInterface.bulkInsert('products', [
+            {
+              id: product.id,
+              category: product.category,
+              phoneId: product.phoneId,
+              itemId: product.itemId,
+              name: product.name,
+              fullPrice: product.fullPrice,
+              price: product.price,
+              screen: product.screen,
+              capacity: product.capacity,
+              color: product.color,
+              ram: product.ram,
+              year: product.year,
+              image: product.image,
+            },
+          ]);
+        }),
+      );
+
+      await transaction.commit();
+    } catch(error) {
+      await transaction.rollback();
+      console.log(error);
+      throw error;
+    }
   },
   down: async(queryInterface, Sequelize) => {
     return Promise.resolve();
-    // return queryInterface.bulkDelete('products', null, {});
   },
 };
