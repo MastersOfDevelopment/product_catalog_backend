@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import { Sequelize } from 'sequelize-typescript';
+import { Phone } from '../models/Phone';
 import { Product } from '../models/Product';
 
 dotenv.config();
@@ -9,7 +10,7 @@ const URL = `${DB_DRIVER}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`;
 
 export const initDB = () => {
   return new Sequelize(URL, {
-    models: [Product],
+    models: [Product, Phone],
     dialectOptions: {
       ssl: {
         rejectUnauthorized: true,

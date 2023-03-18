@@ -1,12 +1,15 @@
 import {
   AllowNull,
   AutoIncrement,
+  // BelongsTo,
   Column,
   DataType,
+  // ForeignKey,
   Model,
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
+// import { Phone } from './Phone';
 
 @Table({
   tableName: 'products',
@@ -30,10 +33,14 @@ export class Product extends Model {
     category: string;
 
   @AllowNull(false)
+  // @ForeignKey(() => Phone)
   @Column({
     type: DataType.STRING,
   })
     phoneId: string;
+
+  // @BelongsTo(() => Phone)
+  //   phone: Phone | null;
 
   @AllowNull(false)
   @Column({
