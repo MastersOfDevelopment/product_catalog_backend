@@ -29,27 +29,3 @@ export const getAll = async(req: Request, res: Response) => {
 
   res.send(pageOfPhones);
 };
-
-export const getNewProducts = async(req: Request, res: Response) => {
-  const products = await productService.getNewProducts();
-
-  if (typeof products === 'number') {
-    res.sendStatus(products);
-
-    return;
-  }
-
-  res.send(products);
-};
-
-export const getProductsWithDiscount = async(req: Request, res: Response) => {
-  const products = await productService.getProductsWithDiscount();
-
-  if (typeof products === 'number') {
-    res.sendStatus(products);
-
-    return;
-  }
-
-  res.send(products);
-};
