@@ -7,7 +7,6 @@ export const getAll = async(req: Request, res: Response) => {
   res.send(phones);
 };
 
-
 export const getPhoneDetails = async(req: Request, res: Response) => {
   const { phoneId } = req.params;
 
@@ -24,4 +23,17 @@ export const getPhoneDetails = async(req: Request, res: Response) => {
   } catch (error) {
     res.sendStatus(400);
   }
+};
+
+export const getRecommendedPhones = async(req: Request, res: Response) => {
+  const { phoneId } = req.params;
+  const phones = await phoneService.getRecommendedPhones(phoneId);
+
+  if (typeof phones === 'number') {
+    res.sendStatus(phones);
+
+    return;
+  }
+
+  res.send(phones);
 };
