@@ -4,7 +4,7 @@ import * as productService from '../services/product';
 export const getAll = async(req: Request, res: Response) => {
   const { page, perPage, sort } = req.query;
   let currentPage = Number(page);
-  const phonesOnPage = Number(perPage);
+  let phonesOnPage = Number(perPage);
   const sortBy = String(sort) || 'year';
 
   if (!currentPage) {
@@ -12,15 +12,7 @@ export const getAll = async(req: Request, res: Response) => {
   }
 
   if (!phonesOnPage) {
-
-    try {
-      const phones = await productService.getAll();
-
-      res.send(phones);
-    } catch (error) {
-      console.error(`Error is ${error}`);
-      res.sendStatus(400);
-    }
+    phonesOnPage = 16;
   }
 
   const pageOfPhones = await productService.getPage(
