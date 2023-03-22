@@ -1,5 +1,19 @@
 import { Product } from '../models/Product';
 
+export const getAll = async() => {
+  try {
+    const phones = await Product.findAll();
+    const total = await Product.count();
+
+    return {
+      phones,
+      total,
+    };
+  } catch {
+    return 500;
+  }
+};
+
 export const getPage = async(page: number, perPage: number, sortBy: string) => {
   const offset = (page - 1) * perPage;
 
