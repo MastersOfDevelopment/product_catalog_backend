@@ -3,18 +3,14 @@ import * as productService from '../services/product';
 
 export const getAll = async(req: Request, res: Response) => {
   const { page, perPage, sort } = req.query;
-  let currentPage = Number(page);
+  const currentPage = Number(page) || 1;
   const phonesOnPage = Number(perPage);
   const sortBy = String(sort) || 'year';
-
-  if (!currentPage) {
-    currentPage = 1;
-  }
 
   if (!phonesOnPage) {
 
     try {
-      const phones = await productService.getAll();
+      const phones = await productService.getAll(sortBy);
 
       res.send(phones);
     } catch (error) {
