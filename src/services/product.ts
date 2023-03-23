@@ -1,8 +1,24 @@
 import { Product } from '../models/Product';
 
-export const getAll = async() => {
+export const getAll = async(sortBy: string) => {
+
+  let sortField = 'year';
+  let sortOrder = 'DESC';
+
+  if (sortBy === 'name') {
+    sortField = 'name';
+    sortOrder = 'ASC';
+  }
+
+  if (sortBy === 'price') {
+    sortField = 'price';
+    sortOrder = 'ASC';
+  }
+
   try {
-    const phones = await Product.findAll();
+    const phones = await Product.findAll({
+      order: [[sortField, sortOrder]],
+    });
     const total = await Product.count();
 
     return {
@@ -20,7 +36,7 @@ export const getPage = async(page: number, perPage: number, sortBy: string) => {
   let sortField = 'year';
   let sortOrder = 'DESC';
 
-  if (sortBy === 'title') {
+  if (sortBy === 'name') {
     sortField = 'name';
     sortOrder = 'ASC';
   }
