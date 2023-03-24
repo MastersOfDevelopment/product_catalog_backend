@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "de1a1fbb-3e62-4cd8-8979-7c368b7e85a5",
+		"name": "phone-shop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "recommended phones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server_url}}/apple-iphone-7-32gb-black/recommended",
+					"host": [
+						"{{server_url}}"
+					],
+					"path": [
+						"apple-iphone-7-32gb-black",
+						"recommended"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get phone by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server_url}}/phones/apple-iphone-7-32gb-gold",
+					"host": [
+						"{{server_url}}"
+					],
+					"path": [
+						"phones",
+						"apple-iphone-7-32gb-gold"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all products with filter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server_url}}/products?page=5&perPage=8&sort=price",
+					"host": [
+						"{{server_url}}"
+					],
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "5"
+						},
+						{
+							"key": "perPage",
+							"value": "8"
+						},
+						{
+							"key": "sort",
+							"value": "price"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "discount products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server_url}}/products/discount",
+					"host": [
+						"{{server_url}}"
+					],
+					"path": [
+						"products",
+						"discount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "new products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server_url}}/products/new",
+					"host": [
+						"{{server_url}}"
+					],
+					"path": [
+						"products",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{server_url}}/products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server_url}}/products",
+					"host": [
+						"{{server_url}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server_url",
+			"value": "localhost:5000"
+		},
+		{
+			"key": "server_url",
+			"value": "https://product-catalog-backend-q6uq.onrender.com",
+			"disabled": true
+		}
+	]
+}
